@@ -127,8 +127,8 @@ public class VisualSemanticsOperator extends BaseOperator {
     
        
     /**
-     * 
-     * @param root
+     * Function for giving of all blocks
+     * @param root start node of DOM Tree
      */
     public void runAlgorithm(AreaImpl root) {
     	
@@ -144,8 +144,8 @@ public class VisualSemanticsOperator extends BaseOperator {
     }
     
     /**
-     * Function for testing of it is Box divisible
-     * @param B given Box
+     * Function for testing of it is block divisible
+     * @param B given block
      * @return true or false if its block divisible
      */
     public boolean isDivisible(AreaImpl B) {
@@ -155,11 +155,13 @@ public class VisualSemanticsOperator extends BaseOperator {
             return false;
         }
           
+        //krok 2 3 budou přidány později
+
+        
         //step four
         if (B.getChildCount() == 1) {
         	return true;
         }
-        //krok 2 3 budou přidány později
 
         //step five
         if (avgSeamDegree(B) < alfa) {
@@ -184,8 +186,8 @@ public class VisualSemanticsOperator extends BaseOperator {
         
     /**
      * Function for calculating of Seam Degree with Width of two Blocks
-     * @param B1 first Box
-     * @param B2 second Box
+     * @param B1 first block
+     * @param B2 second block
      * @return value of Seam Degree between two added blocks
      */
     public double seamDegreeW(AreaImpl B1, AreaImpl B2) {
@@ -216,8 +218,8 @@ public class VisualSemanticsOperator extends BaseOperator {
         
     /**
      * Function for calculating of Seam Degree with Height of two Blocks
-     * @param B1 first Box
-     * @param B2 second Box
+     * @param B1 first block
+     * @param B2 second block
      * @return value of Seam Degree between two added blocks
      */
     public double seamDegreeH(AreaImpl B1, AreaImpl B2) {
@@ -246,10 +248,10 @@ public class VisualSemanticsOperator extends BaseOperator {
     }
     
     /**
-     * 
-     * @param B1
-     * @param B2
-     * @return
+     * Function for test of width adjacent of two given blocks	
+     * @param B1 first block
+     * @param B2 second block
+     * @return return true if is it adjacent false otherwise
      */
     public boolean widthAdj(AreaImpl B1, AreaImpl B2) {
     	
@@ -296,10 +298,10 @@ public class VisualSemanticsOperator extends BaseOperator {
     }
     
     /**
-     * 
-     * @param B1
-     * @param B2
-     * @return
+     * Function for test of height adjacent of two given blocks	
+     * @param B1 first block
+     * @param B2 second block
+     * @return return true if is it adjacent false otherwise
      */
     public boolean heightAdj(AreaImpl B1, AreaImpl B2) {
     	
@@ -347,7 +349,7 @@ public class VisualSemanticsOperator extends BaseOperator {
         
     /**
      * Function for calculating average seam degree of given block
-     * @param B given Box
+     * @param B given block
      * @return average seam degree
      */
     public double avgSeamDegree(AreaImpl B) {
@@ -381,8 +383,8 @@ public class VisualSemanticsOperator extends BaseOperator {
     }
         
     /**
-     * Function for calculating of Area content of given Block
-     * @param B given Box
+     * Function for calculating of Area content of given block
+     * @param B given block
      * @return calculated Area
      */
     public double Area(AreaImpl B) {
@@ -410,12 +412,12 @@ public class VisualSemanticsOperator extends BaseOperator {
     }
         
     /**
-     * 
-     * @param vec1
-     * @param vec2
-     * @param B1
-     * @param B2
-     * @return
+     * Weight function
+     * @param vec1 content vector of first block
+     * @param vec2 content vector of second block
+     * @param B1 first block
+     * @param B2 second block
+     * @return value of Weight function
      */
     public double Weight(List<Double> vec1, List<Double> vec2, AreaImpl B1, AreaImpl B2) {
     	
@@ -487,9 +489,9 @@ public class VisualSemanticsOperator extends BaseOperator {
     }
     
     /**
-     * 	
-     * @param B
-     * @return
+     * Function for return text contents of given block	
+     * @param B given block
+     * @return vector of text contents B
      */
     public List<Double> getTextVector(AreaImpl B) {
     	
@@ -509,9 +511,9 @@ public class VisualSemanticsOperator extends BaseOperator {
     }
   
     /**
-     * 
-     * @param B
-     * @return
+     * Function for return image contents of given block	
+     * @param B given block
+     * @return vector of image contents B
      */
     public List<Double> getImgVector(AreaImpl B) {
     	
@@ -531,9 +533,9 @@ public class VisualSemanticsOperator extends BaseOperator {
     }
     
     /**
-     * 
-     * @param B
-     * @return
+     * Function for return input contents of given block	
+     * @param B given block
+     * @return vector of input contents B
      */
     public List<Double> getContentVector(AreaImpl B) {
     	
@@ -553,10 +555,10 @@ public class VisualSemanticsOperator extends BaseOperator {
     }
     
     /**
-     * 
-     * @param B1
-     * @param B2
-     * @return
+     * Function for calculating content similarity of two given blocks
+     * @param B1 first block
+     * @param B2 second block
+     * @return calculated content similarity
      */
     public double contentSimilarity(AreaImpl B1, AreaImpl B2) {
     	
